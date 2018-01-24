@@ -27,6 +27,7 @@ import com.amirtokopedia.newsapitokopedia.util.Common
 import com.google.gson.Gson
 import kotlinx.android.synthetic.main.action_bar_layout.*
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.card_news_source.*
 import kotlinx.android.synthetic.main.layout_main.*
 import kotlinx.android.synthetic.main.list_category.*
 import kotlinx.android.synthetic.main.list_country.*
@@ -56,9 +57,9 @@ class MainActivity : CoreActivity(), SourcePresenter.SourceInterface, SourceRecy
     var adapterLanguage : LanguageAdapter? = null
     var adapterCategory : CategoryAdapter? = null
     var adapterCountry : CountryAdapter? = null
-    var languageOpen = true
-    var categoryOpen = true
-    var countryOpen = true
+    var languageOpen = false
+    var categoryOpen = false
+    var countryOpen = false
     var categoryName = ""
     var languageName = ""
     var countryName = ""
@@ -97,27 +98,33 @@ class MainActivity : CoreActivity(), SourcePresenter.SourceInterface, SourceRecy
                 if(categoryOpen){
                     categoryOpen = false
                     recycler_category.visibility = View.GONE
+                    iv_icon_category.setImageDrawable(this@MainActivity.resources.getDrawable(R.drawable.ic_keyboard_arrow_right_black))
                 }else{
                     categoryOpen = true
                     recycler_category.visibility = View.VISIBLE
+                    iv_icon_category.setImageDrawable(this@MainActivity.resources.getDrawable(R.drawable.ic_keyboard_arrow_down_black))
                 }
             }
             rl_language->{
                 if(languageOpen){
                     languageOpen = false
                     recycler_language.visibility = View.GONE
+                    iv_icon_language.setImageDrawable(this@MainActivity.resources.getDrawable(R.drawable.ic_keyboard_arrow_right_black))
                 }else{
                     languageOpen = true
                     recycler_language.visibility = View.VISIBLE
+                    iv_icon_language.setImageDrawable(this@MainActivity.resources.getDrawable(R.drawable.ic_keyboard_arrow_down_black))
                 }
             }
             rl_country->{
                 if(countryOpen){
                     countryOpen = false
                     recycler_country.visibility = View.GONE
+                    iv_icon_country.setImageDrawable(this@MainActivity.resources.getDrawable(R.drawable.ic_keyboard_arrow_right_black))
                 }else{
                     countryOpen = true
                     recycler_country.visibility = View.VISIBLE
+                    iv_icon_country.setImageDrawable(this@MainActivity.resources.getDrawable(R.drawable.ic_keyboard_arrow_down_black))
                 }
             }
 
@@ -233,6 +240,7 @@ class MainActivity : CoreActivity(), SourcePresenter.SourceInterface, SourceRecy
 
     override fun onItemSelected(item: CountryModel.dataCountry, tempView: View) {
         languageName = item.code!!
+        language_value.text = item.name!!
         if(currentCheckLanguage != null)
         {
             tempView.visibility = View.VISIBLE
@@ -241,10 +249,12 @@ class MainActivity : CoreActivity(), SourcePresenter.SourceInterface, SourceRecy
         }
         initData()
         drawer_layout.closeDrawers()
+        closeDropdown()
     }
 
     override fun onItemSelected(item: CategoryModel.dataCategory, tempView: View) {
         categoryName = item.code!!
+        category_value.text = item.name!!
         if(currentCheckCategory != null)
         {
             tempView.visibility = View.VISIBLE
@@ -253,11 +263,13 @@ class MainActivity : CoreActivity(), SourcePresenter.SourceInterface, SourceRecy
         }
         initData()
         drawer_layout.closeDrawers()
+        closeDropdown()
 
     }
 
     override fun onItemSelectedCountry(item: CountryModel.dataCountry, tempView: View) {
         countryName = item.code!!
+        country_value.text = item.name!!
         if(currentCheckCountry != null)
         {
             tempView.visibility = View.VISIBLE
@@ -266,24 +278,43 @@ class MainActivity : CoreActivity(), SourcePresenter.SourceInterface, SourceRecy
         }
         initData()
         drawer_layout.closeDrawers()
+        closeDropdown()
 
     }
 
-    override fun setCurrentCategory(view: View) {
+    override fun setCurrentCategory(view: View, name : String) {
         currentCheckCategory = view
+        category_value.text = name
     }
 
-    override fun setCurrentLanguage(view: View) {
+    override fun setCurrentLanguage(view: View, name : String) {
         currentCheckLanguage = view
+        language_value.text = name
     }
 
-    override fun setCurrentCountry(view: View) {
+    override fun setCurrentCountry(view: View, name : String) {
         currentCheckCountry = view
+        country_value.text = name
     }
 
     public override fun onDestroy() {
         super.onDestroy()
         Runtime.getRuntime().gc()
+    }
+
+    private fun closeDropdown(){
+        categoryOpen = false
+        recycler_category.visibility = View.GONE
+        iv_icon_category.setImageDrawable(this@MainActivity.resources.getDrawable(R.drawable.ic_keyboard_arrow_right_black))
+
+        countryOpen = false
+        recycler_country.visibility = View.GONE
+        iv_icon_country.setImageDrawable(this@MainActivity.resources.getDrawable(R.drawable.ic_keyboard_arrow_right_black))
+
+        languageOpen = false
+        recycler_language.visibility = View.GONE
+        iv_icon_language.setImageDrawable(this@MainActivity.resources.getDrawable(R.drawable.ic_keyboard_arrow_right_black))
+
     }
 }
 

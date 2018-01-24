@@ -39,7 +39,7 @@ class LanguageAdapter(val context: Context, val data : CountryModel?) : Recycler
 
             if(source?.name?.equals("All", true)!!){
                 itemView.iv_check.visibility = View.VISIBLE
-                itemListener?.setCurrentLanguage(itemView.iv_check)
+                itemListener?.setCurrentLanguage(itemView.iv_check, source?.name!!)
             }
 
         }
@@ -64,7 +64,7 @@ class LanguageAdapter(val context: Context, val data : CountryModel?) : Recycler
     /** The listener class for source list items  */
     interface onItemClick {
 
-        fun setCurrentLanguage(view : View)
+        fun setCurrentLanguage(view : View, name : String)
         /** Called when a my request item is selected  */
         fun onItemSelected(item: CountryModel.dataCountry, tempView : View)
 

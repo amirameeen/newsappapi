@@ -10,6 +10,8 @@
         android:layout_width="match_parent"
         android:layout_height="@dimen/padding_50dp">
         <TextView
+            android:layout_marginRight="@dimen/padding_10dp"
+            android:id="@+id/language_title"
             android:layout_centerVertical="true"
             android:textStyle="bold"
             android:textSize="@dimen/padding_15dp"
@@ -17,14 +19,26 @@
             android:text="News Language"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
-        <ImageView
+        <TextView
+            android:layout_toLeftOf="@+id/iv_icon_language"
+            android:id="@+id/language_value"
             android:layout_centerVertical="true"
-            android:src="@drawable/ic_keyboard_arrow_down_black"
+            android:textStyle="bold"
+            android:text="All"
+            android:textSize="@dimen/padding_15dp"
+            android:textColor="@color/colorBlueLink"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <ImageView
+            android:id="@+id/iv_icon_language"
+            android:layout_centerVertical="true"
+            android:src="@drawable/ic_keyboard_arrow_right_black"
             android:layout_alignParentRight="true"
             android:layout_width="@dimen/padding_25dp"
             android:layout_height="@dimen/padding_25dp" />
     </RelativeLayout>
     <android.support.v7.widget.RecyclerView
+        android:visibility="gone"
         android:nestedScrollingEnabled="false"
         android:id="@+id/recycler_language"
         android:layout_width="match_parent"

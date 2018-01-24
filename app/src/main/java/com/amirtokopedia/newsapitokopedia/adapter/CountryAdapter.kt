@@ -36,7 +36,7 @@ class CountryAdapter(val context: Context, val data : CountryModel?) : RecyclerV
 
             if(source?.name?.equals("All", true)!!){
                 itemView.iv_check.visibility = View.VISIBLE
-                itemListener?.setCurrentCountry(itemView.iv_check)
+                itemListener?.setCurrentCountry(itemView.iv_check, source?.name!!)
             }
 
         }
@@ -61,7 +61,7 @@ class CountryAdapter(val context: Context, val data : CountryModel?) : RecyclerV
     /** The listener class for source list items  */
     interface onItemClick {
 
-        fun setCurrentCountry(view : View)
+        fun setCurrentCountry(view : View, name : String)
         /** Called when a my request item is selected  */
         fun onItemSelectedCountry(item: CountryModel.dataCountry, tempView : View)
 

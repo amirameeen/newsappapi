@@ -35,7 +35,7 @@ class CategoryAdapter(val context: Context, val data : CategoryModel?) : Recycle
             if(source?.name?.equals("All", true)!!)
             {
                 itemView.iv_check.visibility = View.VISIBLE
-                itemListener?.setCurrentCategory(itemView.iv_check)
+                itemListener?.setCurrentCategory(itemView.iv_check, source?.name!!)
             }
 
         }
@@ -60,7 +60,7 @@ class CategoryAdapter(val context: Context, val data : CategoryModel?) : Recycle
     /** The listener class for source list items  */
     interface onItemClick {
 
-        fun setCurrentCategory(view : View)
+        fun setCurrentCategory(view : View, name : String)
         /** Called when a my request item is selected  */
         fun onItemSelected(item: CategoryModel.dataCategory, tempView : View)
 
