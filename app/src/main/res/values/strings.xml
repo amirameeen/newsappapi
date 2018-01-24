@@ -1,0 +1,11 @@
+<resources>
+
+    <string name="prefs_locale" translatable="false">PREFS_LOCALE</string>
+    <string name="prefs_locale_en" translatable="false">en</string>
+    <string name="prefs_locale_in" translatable="false">in</string>
+    <string name="prefs_locale_fr" translatable="false">fr</string>
+    <string name="prefs_is_launch" translatable="false">IS_LAUNCH</string>
+
+
+    <string name="app_name">NewsapiTokopedia</string>
+</resources>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    android:background="@color/colorPrimary"
+    android:paddingLeft="10dp"
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="50dp">
+    <LinearLayout
+        android:visibility="gone"
+        android:id="@+id/back_button"
+        android:gravity="center_vertical"
+        android:layout_centerVertical="true"
+        android:layout_width="50dp"
+        android:layout_height="match_parent">
+        <ImageView
+            android:src="@drawable/back2"
+            android:layout_width="20dp"
+            android:layout_height="20dp" />
+    </LinearLayout>
+    <TextView
+        android:textColor="@android:color/white"
+        android:id="@+id/tv_welcome_user"
+        android:text="Welcome"
+        android:textAllCaps="true"
+        android:layout_centerInParent="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"></TextView>
+</RelativeLayout>
