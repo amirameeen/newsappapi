@@ -8,6 +8,8 @@ import android.view.View
 import android.view.ViewGroup
 import com.amirtokopedia.newsapitokopedia.R
 import com.amirtokopedia.newsapitokopedia.model.remote.ArticlesResponse
+import com.squareup.picasso.MemoryPolicy
+import com.squareup.picasso.NetworkPolicy
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.card_list_article.view.*
 import java.text.ParseException
@@ -35,10 +37,15 @@ class ListArticleRecycleAdapter(val context: Context, val data : ArticlesRespons
         fun bindView(position : Int) {
             var source = data?.articles?.get(position)
 
-            Picasso.with(context).load(source?.urlToImage)
-                    .error(R.drawable.ic_image_loading)
-                    .placeholder(R.drawable.ic_image_loading)
-                    .centerCrop().fit().into(itemView.iv_news_image)
+            if(source?.urlToImage != null && !source?.urlToImage?.equals("")!!){
+                Picasso.with(context).load(source?.urlToImage)
+                        .error(R.drawable.ic_image_loading)
+                        .placeholder(R.drawable.ic_image_loading)
+                        .centerCrop().resize(150, 120)
+                        .into(itemView.iv_news_image)
+            }else{
+                itemView.iv_news_image.setImageDrawable(context.resources.getDrawable(R.drawable.ic_image_loading))
+            }
             itemView.tv_title.text = Html.fromHtml(source?.title)
 //            var textDescription = source?.description
 //            if(textDescription?.length!! > 100)
