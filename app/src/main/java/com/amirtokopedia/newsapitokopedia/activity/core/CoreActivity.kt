@@ -87,11 +87,19 @@ abstract class CoreActivity : AppCompatActivity() {
         }
     }
 
-    fun actionBarSetting(backButton : Boolean, titlePage : String){
-        if(backButton)
+    fun actionBarSetting(backButton : Boolean, titlePage : String, isArticle : Boolean) {
+        if (backButton)
             back_button.visibility = View.VISIBLE
         else
             back_button.visibility = View.GONE
-        tv_welcome_user.text = titlePage
+
+        if (isArticle) {
+            tv_welcome_user.visibility = View.GONE
+            tv_article_title.text = titlePage
+            tv_article_title.visibility = View.VISIBLE
+        } else {
+            tv_welcome_user.visibility = View.VISIBLE
+            tv_welcome_user.text = titlePage
+        }
     }
 }

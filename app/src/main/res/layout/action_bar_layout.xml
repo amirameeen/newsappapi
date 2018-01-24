@@ -24,4 +24,14 @@
         android:layout_centerInParent="true"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"></TextView>
+    <TextView
+        android:visibility="gone"
+        android:layout_toRightOf="@+id/back_button"
+        android:textColor="@android:color/white"
+        android:id="@+id/tv_article_title"
+        android:text="Welcome"
+        android:textAllCaps="true"
+        android:layout_centerInParent="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"></TextView>
 </RelativeLayout>

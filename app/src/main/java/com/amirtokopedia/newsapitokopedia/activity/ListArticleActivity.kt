@@ -5,16 +5,11 @@ import android.content.Intent
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import android.view.View
-import android.widget.Toast
 import com.amirtokopedia.newsapitokopedia.R
 import com.amirtokopedia.newsapitokopedia.activity.core.CoreActivity
 import com.amirtokopedia.newsapitokopedia.adapter.ListArticleRecycleAdapter
-import com.amirtokopedia.newsapitokopedia.adapter.SourceRecycleAdapter
 import com.amirtokopedia.newsapitokopedia.model.remote.ArticlesResponse
-import com.amirtokopedia.newsapitokopedia.model.remote.Source
-import com.amirtokopedia.newsapitokopedia.model.remote.SourceResponse
 import com.amirtokopedia.newsapitokopedia.presenter.ListArticlePresenter
-import com.amirtokopedia.newsapitokopedia.presenter.SourcePresenter
 import com.amirtokopedia.newsapitokopedia.util.Common
 import kotlinx.android.synthetic.main.action_bar_layout.*
 import kotlinx.android.synthetic.main.activity_list_article.*
@@ -68,7 +63,7 @@ class ListArticleActivity : CoreActivity(), ListArticlePresenter.ArticleInterfac
             if (dataBundle != null) {
                 sourceId = dataBundle.getString(SOURCE_ID)
                 val titlePage = dataBundle.getString(TITLE_PAGE)
-                actionBarSetting(true, titlePage)
+                actionBarSetting(true, titlePage, false)
             }
 
         } catch (e: Exception) {

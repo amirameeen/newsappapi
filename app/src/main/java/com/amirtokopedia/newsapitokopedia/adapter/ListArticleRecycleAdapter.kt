@@ -2,6 +2,7 @@ package com.amirtokopedia.newsapitokopedia.adapter
 
 import android.content.Context
 import android.support.v7.widget.RecyclerView
+import android.text.Html
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -38,7 +39,7 @@ class ListArticleRecycleAdapter(val context: Context, val data : ArticlesRespons
                     .error(R.drawable.ic_image_loading)
                     .placeholder(R.drawable.ic_image_loading)
                     .centerCrop().fit().into(itemView.iv_news_image)
-            itemView.tv_title.text = source?.title
+            itemView.tv_title.text = Html.fromHtml(source?.title)
 //            var textDescription = source?.description
 //            if(textDescription?.length!! > 100)
 //                textDescription = textDescription.substring(0, 100) + "..."

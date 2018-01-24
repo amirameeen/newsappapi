@@ -52,7 +52,7 @@ class DetailArticleActivity : CoreActivity(), View.OnClickListener {
             if (dataBundle != null) {
                 webUrl = dataBundle.getString(WEB_URL)
                 val titlePage = dataBundle.getString(TITLE_PAGE)
-                actionBarSetting(true, titlePage)
+                actionBarSetting(true, titlePage, true)
             }
 
         } catch (e: Exception) {
