@@ -101,4 +101,9 @@ class ListArticleActivity : CoreActivity(), ListArticlePresenter.ArticleInterfac
 //        Toast.makeText(this@ListArticleActivity, item.title, Toast.LENGTH_SHORT).show()
         DetailArticleActivity.launchIntent(this@ListArticleActivity, item.url!!, item.title!!)
     }
+
+    public override fun onDestroy() {
+        super.onDestroy()
+        Runtime.getRuntime().gc()
+    }
 }

@@ -121,4 +121,9 @@ class SearchArticleActivity : CoreActivity(), ListArticlePresenter.ArticleInterf
         return false
     }
 
+    public override fun onDestroy() {
+        super.onDestroy()
+        Runtime.getRuntime().gc()
+    }
+
 }

@@ -14,7 +14,7 @@
             android:textStyle="bold"
             android:textSize="@dimen/padding_15dp"
             android:textColor="@android:color/black"
-            android:text="Language"
+            android:text="News Language"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
         <ImageView
@@ -25,6 +25,7 @@
             android:layout_height="@dimen/padding_25dp" />
     </RelativeLayout>
     <android.support.v7.widget.RecyclerView
+        android:nestedScrollingEnabled="false"
         android:id="@+id/recycler_language"
         android:layout_width="match_parent"
         android:layout_height="match_parent">

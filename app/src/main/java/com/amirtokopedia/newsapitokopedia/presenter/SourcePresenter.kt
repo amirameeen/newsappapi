@@ -16,10 +16,10 @@ class SourcePresenter(var ApplicationContext: Context, var listener: SourceInter
         ApiInitiation()
     }
 
-    fun getDataProcess() {
+    fun getDataProcess(country : String, language : String, category : String) {
         listener.onLoadData()
 
-        val dataService = mApiService?.getNewsSource(GetApiKey())
+        val dataService = mApiService?.getNewsSource(GetApiKey(), country, language, category)
         dataService?.enqueue(object : Callback<SourceResponse> {
             override fun onResponse(call: Call<SourceResponse>, response: Response<SourceResponse>) {
                 val StatusCode = response.code()

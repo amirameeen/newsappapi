@@ -31,6 +31,11 @@ class SplashActivity : AppCompatActivity(){
 
     }
 
+    public override fun onDestroy() {
+        super.onDestroy()
+        Runtime.getRuntime().gc()
+    }
+
 
 
 }

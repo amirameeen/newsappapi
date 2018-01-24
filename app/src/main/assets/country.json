@@ -1,210 +1,95 @@
 {
   "countries": [
     {
-      "name": "",
-      "code" : "ae"
+      "name": "All",
+      "code" : ""
     },
     {
-      "name": "",
+      "name": "Argentina",
       "code" : "ar"
     },
     {
-      "name": "",
-      "code" : "at"
-    },
-    {
-      "name": "",
+      "name": "Australia",
       "code" : "au"
     },
     {
-      "name": "",
-      "code" : "be"
-    },
-    {
-      "name": "",
-      "code" : "bg"
-    },
-    {
-      "name": "",
+      "name": "Brazil",
       "code" : "br"
     },
     {
-      "name": "",
+      "name": "Canada",
       "code" : "ca"
     },
     {
-      "name": "",
-      "code" : "ch"
+      "name": "China",
+      "code" : "cn"
     },
     {
-      "name": "",
-      "code" : "no"
-    },
-    {
-      "name": "",
-      "code" : "nl"
-    },
-    {
-      "name": "",
-      "code" : "ng"
-    },
-    {
-      "name": "",
-      "code" : "my"
-    },
-    {
-      "name": "",
-      "code" : "mx"
-    },
-    {
-      "name": "",
-      "code" : "ma"
-    },
-    {
-      "name": "",
-      "code" : "lv"
-    },
-    {
-      "name": "",
-      "code" : "lt"
-    },
-    {
-      "name": "",
-      "code" : "kr"
-    },
-    {
-      "name": "",
-      "code" : "jp"
-    },
-    {
-      "name": "",
-      "code" : "it"
-    },
-    {
-      "name": "",
-      "code" : "in"
-    },
-    {
-      "name": "",
-      "code" : "il"
-    },
-    {
-      "name": "",
-      "code" : "ie"
-    },
-    {
-      "name": "",
-      "code" : "id"
-    },
-    {
-      "name": "",
-      "code" : "hu"
-    },
-    {
-      "name": "",
-      "code" : "hk"
-    },
-    {
-      "name": "",
-      "code" : "gr"
-    },
-    {
-      "name": "",
-      "code" : "gb"
-    },
-    {
-      "name": "",
+      "name": "France",
       "code" : "fr"
     },
     {
-      "name": "",
-      "code" : "eg"
-    },{
-      "name": "",
+      "name": "Germany",
       "code" : "de"
     },
     {
-      "name": "",
-      "code" : "cz"
+      "name": "Hong Kong",
+      "code" : "hk"
     },
     {
-      "name": "",
-      "code" : "cu"
+      "name": "India",
+      "code" : "in"
     },
     {
-      "name": "",
-      "code" : "si"
+      "name": "Ireland",
+      "code" : "ie"
     },
     {
-      "name": "",
-      "code" : "sg"
+      "name": "Israel",
+      "code" : "il"
     },
     {
-      "name": "",
-      "code" : "se"
+      "name": "Italy",
+      "code" : "it"
     },
     {
-      "name": "",
-      "code" : "sa"
+      "name": "Netherlands",
+      "code" : "nl"
     },
     {
-      "name": "",
+      "name": "Norway",
+      "code" : "no"
+    },
+    {
+      "name": "Pakistan",
+      "code" : "pk"
+    },
+    {
+      "name": "Russia",
       "code" : "ru"
     },
     {
-      "name": "",
-      "code" : "rs"
+      "name": "Saudi Arabia",
+      "code" : "sa"
     },
     {
-      "name": "",
-      "code" : "ro"
-    },
-    {
-      "name": "",
-      "code" : "pt"
-    },
-    {
-      "name": "",
-      "code" : "pl"
-    },
-    {
-      "name": "",
-      "code" : "ph"
-    },
-    {
-      "name": "",
-      "code" : "nz"
-    },
-    {
-      "name": "",
-      "code" : "ua"
-    },
-    {
-      "name": "",
-      "code" : "tw"
-    },
-    {
-      "name": "",
-      "code" : "tr"
-    },
-    {
-      "name": "",
-      "code" : "th"
-    },
-    {
-      "name": "",
-      "code" : "sk"
-    },
-    {
-      "name": "",
+      "name": "South Africa",
       "code" : "za"
     },
     {
-      "name": "",
-      "code" : "ve"
+      "name": "Spain",
+      "code" : "es"
     },
     {
-      "name": "",
+      "name": "Sweden",
+      "code" : "se"
+    },
+    {
+      "name": "United Kingdowm",
+      "code" : "uk"
+    },
+    {
+      "name": "United States",
       "code" : "us"
     }
   ]

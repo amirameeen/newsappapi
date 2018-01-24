@@ -28,6 +28,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/padding_20dp"></View>
                 <include layout="@layout/list_category"></include>
+                <include layout="@layout/list_country"></include>
                 <include layout="@layout/list_language"></include>
             </LinearLayout>
 

@@ -14,11 +14,20 @@ import com.amirtokopedia.newsapitokopedia.model.remote.ArticlesResponse
 import com.amirtokopedia.newsapitokopedia.presenter.ListArticlePresenter
 import kotlinx.android.synthetic.main.action_bar_layout.*
 import kotlinx.android.synthetic.main.activity_detail_article.*
+import android.support.design.widget.CoordinatorLayout.Behavior.setTag
+import android.util.Log
+import android.webkit.WebSettings
+import android.webkit.WebView
+import java.io.File
+
+
+
 
 class DetailArticleActivity : CoreActivity(), View.OnClickListener {
 
 
     var webUrl = ""
+    var mWebView : WebView? = null
 
     companion object {
         val WEB_URL = "weburl"
@@ -39,9 +48,13 @@ class DetailArticleActivity : CoreActivity(), View.OnClickListener {
     }
 
     fun initView(){
-        webview_content.settings.javaScriptEnabled = true
-        webview_content.setWebViewClient(WebViewClient())
-        webview_content.loadUrl(webUrl)
+
+        mWebView = WebView(getApplicationContext());
+        mWebView?.settings?.javaScriptEnabled = true
+        mWebView?.setWebViewClient(WebViewClient())
+        mWebView?.loadUrl(webUrl)
+        mWebView?.settings?.cacheMode = WebSettings.LOAD_NO_CACHE
+        fl_webview.addView(mWebView)
     }
     fun getExtras() {
         try {
@@ -64,6 +77,76 @@ class DetailArticleActivity : CoreActivity(), View.OnClickListener {
 //        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
         if(v == back_button){
             finish()
+        }
+    }
+
+    override fun onDetachedFromWindow() {
+        super.onDetachedFromWindow()
+        releaseWebView()
+    }
+
+    private fun releaseWebView() {
+        fl_webview.removeAllViews()
+        mWebView?.settings?.javaScriptEnabled = false
+        mWebView?.removeJavascriptInterface("android");
+        mWebView?.clearHistory()
+        mWebView?.clearCache(true)
+        mWebView?.loadUrl("about:blank")
+        mWebView?.onPause()
+        mWebView?.removeAllViewsInLayout()
+        mWebView?.removeAllViews()
+        mWebView?.destroyDrawingCache()
+        mWebView?.pauseTimers()
+        mWebView?.destroy()
+        mWebView = null
+        clearApplicationCache()
+        this@DetailArticleActivity.deleteDatabase("webview.db");
+        this@DetailArticleActivity.deleteDatabase("webviewCache.db");
+
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        releaseWebView()
+        Runtime.getRuntime().gc();
+    }
+
+    private fun clearApplicationCache() {
+        val dir = cacheDir
+
+        if (dir != null && dir.isDirectory) {
+            try {
+                val stack = ArrayList<File>()
+
+                // Initialise the list
+                val children = dir.listFiles()
+                for (child in children) {
+                    stack.add(child)
+                }
+
+                while (stack.size > 0) {
+                    val f = stack[stack.size - 1]
+                    if (f.isDirectory() === true) {
+                        val empty = f.delete()
+
+                        if (empty == false) {
+                            val files = f.listFiles()
+                            if (files.size != 0) {
+                                for (tmp in files) {
+                                    stack.add(tmp)
+                                }
+                            }
+                        } else {
+                            stack.removeAt(stack.size - 1)
+                        }
+                    } else {
+                        f.delete()
+                        stack.removeAt(stack.size - 1)
+                    }
+                }
+            } catch (e: Exception) {
+            }
+
         }
     }
 }
