@@ -11,16 +11,22 @@ import android.support.v7.widget.LinearLayoutManager
 import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
+import com.amirtokopedia.newsapitokopedia.App.Companion.context
 import com.amirtokopedia.newsapitokopedia.R
 import com.amirtokopedia.newsapitokopedia.activity.core.CoreActivity
 import com.amirtokopedia.newsapitokopedia.adapter.SourceRecycleAdapter
+import com.amirtokopedia.newsapitokopedia.model.local.CategoryModel
+import com.amirtokopedia.newsapitokopedia.model.local.CountryModel
 import com.amirtokopedia.newsapitokopedia.model.remote.Source
 import com.amirtokopedia.newsapitokopedia.model.remote.SourceResponse
 import com.amirtokopedia.newsapitokopedia.presenter.SourcePresenter
 import com.amirtokopedia.newsapitokopedia.util.Common
+import com.google.gson.Gson
 import kotlinx.android.synthetic.main.action_bar_layout.*
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.layout_main.*
+import java.io.IOException
+import java.io.InputStream
 
 class MainActivity : CoreActivity(), SourcePresenter.SourceInterface, SourceRecycleAdapter.onItemClick,
         NavigationView.OnNavigationItemSelectedListener, View.OnClickListener{
@@ -42,6 +48,7 @@ class MainActivity : CoreActivity(), SourcePresenter.SourceInterface, SourceRecy
         button_menu.setOnClickListener(this)
         drawerSetting()
         initData()
+        categoryAndLanguage()
     }
 
     fun initData(){
@@ -109,6 +116,40 @@ class MainActivity : CoreActivity(), SourcePresenter.SourceInterface, SourceRecy
             return
         }
         super.onBackPressed()
+    }
+
+    fun categoryAndLanguage(){
+        var jsonCategory = ""
+        var jsonLanguage = ""
+        val menuCategory : InputStream
+        val menuLanguage : InputStream
+        try {
+            menuCategory = context!!.assets.open("category.json")
+            menuLanguage = context!!.assets.open("country.json")
+
+
+            val sizeCategory = menuCategory.available()
+            val bufferCategory = ByteArray(sizeCategory)
+            menuCategory.read(bufferCategory)
+            menuCategory.close()
+
+            val sizeLanguage = menuLanguage.available()
+            val bufferLanguage = ByteArray(sizeLanguage)
+            menuLanguage.read(bufferLanguage)
+            menuLanguage.close()
+
+            jsonCategory = String(bufferCategory, Charsets.UTF_8)
+            jsonLanguage = String(bufferLanguage, Charsets.UTF_8)
+        } catch (ex: IOException) {
+            ex.printStackTrace()
+        }
+
+        var dataCategory: CategoryModel = Gson().fromJson(jsonCategory, CategoryModel::class.java)
+        var dataLanguage: CountryModel = Gson().fromJson(jsonLanguage, CountryModel::class.java)
+        var a = ""
+//        val convertedMenuList: List<ConvertedData>? = ConverterMenuDasboard().convertDashboardDataList(data)
+
+//        updateResource(Resource.success(convertedMenuList))
     }
 }
 

@@ -12,7 +12,7 @@ class CountryModel {
 
     inner class dataCountry{
         @SerializedName("name")
-        var  name: Source? = null
+        var  name: String? = null
         @SerializedName("code")
         var code: String? = null
     }

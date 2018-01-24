@@ -12,7 +12,7 @@ class CategoryModel {
 
     inner class dataCategory{
         @SerializedName("name")
-        var  name: Source? = null
+        var  name: String? = null
         @SerializedName("code")
         var code: String? = null
     }
