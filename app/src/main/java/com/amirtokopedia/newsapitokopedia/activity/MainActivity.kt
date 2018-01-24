@@ -52,6 +52,7 @@ class MainActivity : CoreActivity(), SourcePresenter.SourceInterface, SourceRecy
 //        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
         initView(data)
         Common.dismissProgressDialog()
+        placeholder_news_source.visibility = View.GONE
     }
 
     override fun onLoadFailure() {

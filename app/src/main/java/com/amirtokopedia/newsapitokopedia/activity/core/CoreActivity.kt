@@ -100,6 +100,24 @@ abstract class CoreActivity : AppCompatActivity() {
         } else {
             tv_welcome_user.visibility = View.VISIBLE
             tv_welcome_user.text = titlePage
+            search_layout_button.visibility = View.VISIBLE
+        }
+    }
+    fun actionBarSetting(typeSearch : Boolean) {
+        if (typeSearch)
+            back_button.visibility = View.VISIBLE
+        else
+            back_button.visibility = View.GONE
+
+        if (typeSearch) {
+            tv_welcome_user.visibility = View.GONE
+            tv_article_title.visibility = View.GONE
+            search_layout_button.visibility = View.GONE
+            rl_search_box.visibility = View.VISIBLE
+        } else {
+            tv_welcome_user.visibility = View.VISIBLE
+            search_layout_button.visibility = View.GONE
+            rl_search_box.visibility = View.GONE
         }
     }
 }

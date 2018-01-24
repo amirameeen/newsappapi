@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:orientation="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:id="@+id/main_card"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:orientation="horizontal">
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:background="@color/colorGray80"
+                    android:textColor="@android:color/black"
+                    android:textStyle="bold"
+                    android:layout_width="@dimen/padding_100dp"
+                    android:layout_height="@dimen/padding_20dp" />
+                <TextView
+                    android:layout_marginTop="@dimen/padding_5dp"
+                    android:background="@color/colorGray80"
+                    android:layout_width="200dp"
+                    android:layout_height="20dp" />
+                <TextView
+                    android:background="@color/colorGray80"
+                    android:textColor="@color/colorBlueLink"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <LinearLayout
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <ImageView
+                        android:src="@drawable/ic_speaker_language_black"
+                        android:layout_width="15dp"
+                        android:layout_height="15dp" />
+                    <TextView
+                        android:background="@color/colorGray80"
+                        android:layout_width="@dimen/padding_100dp"
+                        android:layout_height="@dimen/padding_10dp" />
+                </LinearLayout>
+                <LinearLayout
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <ImageView
+                        android:src="@drawable/ic_flag_material_black"
+                        android:layout_width="15dp"
+                        android:layout_height="15dp" />
+                    <TextView
+                        android:background="@color/colorGray80"
+                        android:layout_width="@dimen/padding_100dp"
+                        android:layout_height="@dimen/padding_10dp" />
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+        <View
+            android:background="@android:color/black"
+            android:layout_below="@+id/main_card"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"></View>
+    </RelativeLayout>
+    <RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:id="@+id/main_card1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:orientation="horizontal">
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:background="@color/colorGray80"
+                    android:textColor="@android:color/black"
+                    android:textStyle="bold"
+                    android:layout_width="@dimen/padding_100dp"
+                    android:layout_height="@dimen/padding_20dp" />
+                <TextView
+                    android:layout_marginTop="@dimen/padding_5dp"
+                    android:background="@color/colorGray80"
+                    android:layout_width="200dp"
+                    android:layout_height="20dp" />
+                <TextView
+                    android:background="@color/colorGray80"
+                    android:textColor="@color/colorBlueLink"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <LinearLayout
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <ImageView
+                        android:src="@drawable/ic_speaker_language_black"
+                        android:layout_width="15dp"
+                        android:layout_height="15dp" />
+                    <TextView
+                        android:background="@color/colorGray80"
+                        android:layout_width="@dimen/padding_100dp"
+                        android:layout_height="@dimen/padding_10dp" />
+                </LinearLayout>
+                <LinearLayout
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <ImageView
+                        android:src="@drawable/ic_flag_material_black"
+                        android:layout_width="15dp"
+                        android:layout_height="15dp" />
+                    <TextView
+                        android:background="@color/colorGray80"
+                        android:layout_width="@dimen/padding_100dp"
+                        android:layout_height="@dimen/padding_10dp" />
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+        <View
+            android:background="@android:color/black"
+            android:layout_below="@+id/main_card1"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"></View>
+    </RelativeLayout>
+    <RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:id="@+id/main_card2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:orientation="horizontal">
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:background="@color/colorGray80"
+                    android:textColor="@android:color/black"
+                    android:textStyle="bold"
+                    android:layout_width="@dimen/padding_100dp"
+                    android:layout_height="@dimen/padding_20dp" />
+                <TextView
+                    android:layout_marginTop="@dimen/padding_5dp"
+                    android:background="@color/colorGray80"
+                    android:layout_width="200dp"
+                    android:layout_height="20dp" />
+                <TextView
+                    android:background="@color/colorGray80"
+                    android:textColor="@color/colorBlueLink"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <LinearLayout
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <ImageView
+                        android:src="@drawable/ic_speaker_language_black"
+                        android:layout_width="15dp"
+                        android:layout_height="15dp" />
+                    <TextView
+                        android:background="@color/colorGray80"
+                        android:layout_width="@dimen/padding_100dp"
+                        android:layout_height="@dimen/padding_10dp" />
+                </LinearLayout>
+                <LinearLayout
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <ImageView
+                        android:src="@drawable/ic_flag_material_black"
+                        android:layout_width="15dp"
+                        android:layout_height="15dp" />
+                    <TextView
+                        android:background="@color/colorGray80"
+                        android:layout_width="@dimen/padding_100dp"
+                        android:layout_height="@dimen/padding_10dp" />
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+        <View
+            android:background="@android:color/black"
+            android:layout_below="@+id/main_card2"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"></View>
+    </RelativeLayout>
+
+</LinearLayout>

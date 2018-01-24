@@ -5,5 +5,11 @@
     <color name="colorAccent">#FF4081</color>
     <color name="colorBlueLink">#3366BB</color>
     <color name="colorGrayDefault">#e8f4f8</color>
+    <color name="colorGray80">#cccccc</color>
+    <color name="colorGray75">#bfbfbf</color>
+    <color name="colorGray55">#8c8c8c</color>
+    <color name="colorGray50">#808080</color>
+    <color name="colorGray40">#666666</color>
+    <color name="colorGray25">#404040</color>
 
 </resources>
