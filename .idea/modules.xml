@@ -4,7 +4,6 @@
     <modules>
       <module fileurl="file://D:\Kerja\newsappapi\NewsapiTokopedia.iml" filepath="D:\Kerja\newsappapi\NewsapiTokopedia.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://D:\Kerja\newsappapi\app\app.iml" filepath="D:\Kerja\newsappapi\app\app.iml" />
       <module fileurl="file://$PROJECT_DIR$/newsappapi.iml" filepath="$PROJECT_DIR$/newsappapi.iml" />
     </modules>
   </component>
