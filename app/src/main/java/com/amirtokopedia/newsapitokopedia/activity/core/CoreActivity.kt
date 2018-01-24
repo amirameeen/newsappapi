@@ -107,7 +107,7 @@ abstract class CoreActivity : AppCompatActivity() {
         if (typeSearch)
             back_button.visibility = View.VISIBLE
         else
-            back_button.visibility = View.GONE
+            button_menu.visibility = View.VISIBLE
 
         if (typeSearch) {
             tv_welcome_user.visibility = View.GONE

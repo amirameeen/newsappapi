@@ -1,0 +1,32 @@
+{
+  "categories": [
+    {
+      "name": "business",
+      "code" : "business"
+    },
+    {
+      "name": "entertainment",
+      "code" : "entertainment"
+    },
+    {
+      "name": "general",
+      "code" : "general"
+    },
+    {
+      "name": "health",
+      "code" : "health"
+    },
+    {
+      "name": "science",
+      "code" : "science"
+    },
+    {
+      "name": "sports",
+      "code" : "sports"
+    },
+    {
+      "name": "technology",
+      "code" : "technology"
+    }
+  ]
+}

@@ -7,6 +7,18 @@
     android:layout_height="50dp">
     <LinearLayout
         android:visibility="gone"
+        android:id="@+id/button_menu"
+        android:gravity="center_vertical"
+        android:layout_centerVertical="true"
+        android:layout_width="30dp"
+        android:layout_height="match_parent">
+        <ImageView
+            android:src="@drawable/ic_menu"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </LinearLayout>
+    <LinearLayout
+        android:visibility="gone"
         android:id="@+id/back_button"
         android:gravity="center_vertical"
         android:layout_centerVertical="true"

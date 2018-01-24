@@ -1,7 +1,14 @@
 package com.amirtokopedia.newsapitokopedia.activity
 
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
+import android.support.design.widget.NavigationView
+import android.support.v4.view.GravityCompat
+import android.support.v4.widget.DrawerLayout
+import android.support.v7.app.ActionBarDrawerToggle
 import android.support.v7.widget.LinearLayoutManager
+import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
 import com.amirtokopedia.newsapitokopedia.R
@@ -13,17 +20,27 @@ import com.amirtokopedia.newsapitokopedia.presenter.SourcePresenter
 import com.amirtokopedia.newsapitokopedia.util.Common
 import kotlinx.android.synthetic.main.action_bar_layout.*
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.layout_main.*
 
-class MainActivity : CoreActivity(), SourcePresenter.SourceInterface, SourceRecycleAdapter.onItemClick{
+class MainActivity : CoreActivity(), SourcePresenter.SourceInterface, SourceRecycleAdapter.onItemClick,
+        NavigationView.OnNavigationItemSelectedListener, View.OnClickListener{
 
+    companion object {
+        fun launchIntent(context: Context) {
+            val intent = Intent(context, MainActivity::class.java)
+            context.startActivity(intent)
+        }
+    }
 
-
+    var mDrawerToggle: ActionBarDrawerToggle? = null
     var presenter : SourcePresenter? = null
     var adapter : SourceRecycleAdapter? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
+        actionBarSetting(false)
+        button_menu.setOnClickListener(this)
+        drawerSetting()
         initData()
     }
 
@@ -42,6 +59,20 @@ class MainActivity : CoreActivity(), SourcePresenter.SourceInterface, SourceRecy
 
     }
 
+    override fun onClick(v: View?) {
+        when(v){
+            button_menu->drawer_layout.openDrawer(navigation_drawer)
+        }
+    }
+
+    fun drawerSetting(){
+        val toggle = ActionBarDrawerToggle(
+                this, drawer_layout, R.string.navigation_drawer_open, R.string.navigation_drawer_close)
+        drawer_layout.setDrawerListener(toggle)
+        toggle.syncState()
+        navigation_drawer.setNavigationItemSelectedListener(this)
+        drawer_layout.setDrawerListener(mDrawerToggle)
+    }
 
     override fun onLoadData() {
 //        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
@@ -65,6 +96,19 @@ class MainActivity : CoreActivity(), SourcePresenter.SourceInterface, SourceRecy
 //        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
 //        Toast.makeText(this@MainActivity, item.name, Toast.LENGTH_SHORT).show()
         ListArticleActivity.launchIntent(this@MainActivity, item.id!!, item.name!!)
+    }
+
+    override fun onNavigationItemSelected(item: MenuItem): Boolean {
+
+        return true
+    }
+
+    override fun onBackPressed() {
+        if (drawer_layout.isDrawerOpen(GravityCompat.START)) {
+            drawer_layout.closeDrawers()
+            return
+        }
+        super.onBackPressed()
     }
 }
 
