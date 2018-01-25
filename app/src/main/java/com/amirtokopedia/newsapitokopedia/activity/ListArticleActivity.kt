@@ -43,6 +43,7 @@ class ListArticleActivity : CoreActivity(), ListArticlePresenter.ArticleInterfac
         swipetorefresh()
     }
 
+    //enable swipe to refresh
     fun swipetorefresh(){
         swiperefresh.setOnRefreshListener(
                 SwipeRefreshLayout.OnRefreshListener {
@@ -52,12 +53,14 @@ class ListArticleActivity : CoreActivity(), ListArticlePresenter.ArticleInterfac
         )
     }
 
+    //fetch data from remote
     fun initData(){
         presenter = ListArticlePresenter(this@ListArticleActivity, this)
         presenter?.attach()
         presenter?.getDataProcess(sourceId, "")
     }
 
+    //build the layout
     fun initView(data : ArticlesResponse){
 
         recycle_list_article.layoutManager = LinearLayoutManager(this@ListArticleActivity, LinearLayoutManager.VERTICAL, false)
@@ -97,6 +100,8 @@ class ListArticleActivity : CoreActivity(), ListArticlePresenter.ArticleInterfac
     override fun onLoadData() {
         Common.showProgressDialog(this@ListArticleActivity)
     }
+
+    //if data from remote return success
     override fun onLoadSuccess(data: ArticlesResponse) {
 
         if(data.articles?.size == 0)
@@ -109,6 +114,7 @@ class ListArticleActivity : CoreActivity(), ListArticlePresenter.ArticleInterfac
         placeholder_list_article.visibility = View.GONE
     }
 
+    //if data from remote return failure
     override fun onLoadFailure() {
         Common.dismissProgressDialog()
         Common.showMessageDialog(this@ListArticleActivity, "Please try again")

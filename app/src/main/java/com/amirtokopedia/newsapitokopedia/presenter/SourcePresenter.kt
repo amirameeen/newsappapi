@@ -16,6 +16,7 @@ class SourcePresenter(var ApplicationContext: Context, var listener: SourceInter
         ApiInitiation()
     }
 
+    //fetch data for source news
     fun getDataProcess(country : String, language : String, category : String) {
         listener.onLoadData()
 

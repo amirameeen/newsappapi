@@ -21,6 +21,7 @@ import java.util.regex.Pattern
 
 /**
  * Created by Amir Malik on 1/24/18.
+ * global function
  */
 object Common {
 

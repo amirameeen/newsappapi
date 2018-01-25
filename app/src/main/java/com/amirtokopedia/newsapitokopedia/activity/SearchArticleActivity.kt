@@ -21,8 +21,6 @@ import kotlinx.android.synthetic.main.activity_search_article.*
 class SearchArticleActivity : CoreActivity(), ListArticlePresenter.ArticleInterface,
         ListArticleRecycleAdapter.onItemClick, View.OnClickListener , TextView.OnEditorActionListener{
 
-
-
     var newsId = ""
 
     companion object {
@@ -49,6 +47,7 @@ class SearchArticleActivity : CoreActivity(), ListArticlePresenter.ArticleInterf
         swipetorefresh()
     }
 
+    //enable swipe to refresh
     fun swipetorefresh(){
         swiperefresh.setOnRefreshListener(
                 SwipeRefreshLayout.OnRefreshListener {
@@ -58,12 +57,14 @@ class SearchArticleActivity : CoreActivity(), ListArticlePresenter.ArticleInterf
         )
     }
 
+    //fetch search data from remote
     fun searchData(sourceId : String, query : String){
         presenter = ListArticlePresenter(this@SearchArticleActivity, this)
         presenter?.attach()
         presenter?.getDataSearch(sourceId, query)
     }
 
+    //build the layout
     fun initView(data : ArticlesResponse){
 
         recycle_search_article.layoutManager = LinearLayoutManager(this@SearchArticleActivity, LinearLayoutManager.VERTICAL, false)
@@ -72,6 +73,7 @@ class SearchArticleActivity : CoreActivity(), ListArticlePresenter.ArticleInterf
         recycle_search_article.adapter = adapter
 
     }
+
     fun getExtras() {
         try {
             // get the Intent that started this Activity
@@ -104,6 +106,8 @@ class SearchArticleActivity : CoreActivity(), ListArticlePresenter.ArticleInterf
     override fun onLoadData() {
         Common.showProgressDialog(this@SearchArticleActivity)
     }
+
+    //if data from remote return success
     override fun onLoadSuccess(data: ArticlesResponse) {
         if(data.articles?.size == 0)
             card_empty.visibility = View.VISIBLE
@@ -113,6 +117,7 @@ class SearchArticleActivity : CoreActivity(), ListArticlePresenter.ArticleInterf
         Common.dismissProgressDialog()
     }
 
+    //if data from remote return failure
     override fun onLoadFailure() {
         Common.dismissProgressDialog()
         Common.showMessageDialog(this@SearchArticleActivity, "Please try again")

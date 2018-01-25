@@ -12,6 +12,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 /**
  * Created by Amir Malik on 5/2/17.
+ * base setting for fetch data
  */
 
 public class APIService {

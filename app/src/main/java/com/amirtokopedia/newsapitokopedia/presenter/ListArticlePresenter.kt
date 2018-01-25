@@ -17,6 +17,7 @@ class ListArticlePresenter(var ApplicationContext: Context, var listener: Articl
         ApiInitiation()
     }
 
+    //fetch data for list article
     fun getDataProcess(sourceId : String, countryId: String) {
         listener.onLoadData()
 
@@ -40,6 +41,7 @@ class ListArticlePresenter(var ApplicationContext: Context, var listener: Articl
         })
     }
 
+    //fetch data for search
     fun getDataSearch(sourceId : String, query : String) {
         listener.onLoadData()
 

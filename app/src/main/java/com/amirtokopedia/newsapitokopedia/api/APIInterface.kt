@@ -10,6 +10,7 @@ import retrofit2.http.Query
 
 /**
  * Created by Amir Malik on 5/2/17.
+ * this class for fetch data interface
  */
 
 interface APIInterface {

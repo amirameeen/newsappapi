@@ -47,6 +47,7 @@ class DetailArticleActivity : CoreActivity(), View.OnClickListener {
         initView()
     }
 
+    //fetch data from web url
     fun initView(){
 
         mWebView = WebView(getApplicationContext());
@@ -85,6 +86,7 @@ class DetailArticleActivity : CoreActivity(), View.OnClickListener {
         releaseWebView()
     }
 
+    //clear data webview
     private fun releaseWebView() {
         fl_webview.removeAllViews()
         mWebView?.settings?.javaScriptEnabled = false
@@ -111,6 +113,7 @@ class DetailArticleActivity : CoreActivity(), View.OnClickListener {
         Runtime.getRuntime().gc();
     }
 
+    //clear application cache
     private fun clearApplicationCache() {
         val dir = cacheDir
 

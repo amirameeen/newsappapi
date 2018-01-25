@@ -8,6 +8,7 @@ import java.util.*
 
 /**
  * Created by Amir Malik on 1/23/18.
+ * global function
  */
 object CommonCompat {
 

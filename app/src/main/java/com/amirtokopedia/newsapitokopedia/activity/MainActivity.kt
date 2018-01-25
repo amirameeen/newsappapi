@@ -87,6 +87,7 @@ class MainActivity : CoreActivity(), SourcePresenter.SourceInterface, SourceRecy
         swipetorefresh()
     }
 
+    //enable swipe to refresh
     fun swipetorefresh(){
         swiperefresh.setOnRefreshListener(
                 SwipeRefreshLayout.OnRefreshListener {
@@ -97,6 +98,7 @@ class MainActivity : CoreActivity(), SourcePresenter.SourceInterface, SourceRecy
         )
     }
 
+    //fetch data from remote
     fun initData(){
         presenter = SourcePresenter(this@MainActivity, this)
         presenter?.attach()
@@ -108,12 +110,14 @@ class MainActivity : CoreActivity(), SourcePresenter.SourceInterface, SourceRecy
         }
     }
 
+    //fetch data from remote for banner
     fun initBanner(){
         presenterBanner = ListArticlePresenter(this@MainActivity, this)
         presenterBanner?.attach()
         presenterBanner?.getDataProcess("", countryId)
     }
 
+    //build the layout
     fun initView(data : SourceResponse){
 
         recycle_source_news.layoutManager = LinearLayoutManager(this@MainActivity, LinearLayoutManager.VERTICAL, false)
@@ -178,6 +182,7 @@ class MainActivity : CoreActivity(), SourcePresenter.SourceInterface, SourceRecy
         Common.showProgressDialog(this@MainActivity)
     }
 
+    //if data from remote return success
     override fun onLoadSuccess(data: SourceResponse) {
         if(data.sources?.size == 0)
             card_empty.visibility = View.VISIBLE
@@ -188,6 +193,7 @@ class MainActivity : CoreActivity(), SourcePresenter.SourceInterface, SourceRecy
         placeholder_news_source.visibility = View.GONE
     }
 
+    //if data from remote return failure
     override fun onLoadFailure() {
         Common.dismissProgressDialog()
         Common.showMessageDialog(this@MainActivity, "Please try again")
@@ -211,6 +217,7 @@ class MainActivity : CoreActivity(), SourcePresenter.SourceInterface, SourceRecy
         super.onBackPressed()
     }
 
+    //generate navbar menu
     fun categoryAndLanguage(){
         var jsonCategory = ""
         var jsonLanguage = ""
@@ -272,6 +279,7 @@ class MainActivity : CoreActivity(), SourcePresenter.SourceInterface, SourceRecy
         rl_country.setOnClickListener(this)
     }
 
+    //item select for language
     override fun onItemSelected(item: CountryModel.dataCountry, tempView: View) {
         languageName = item.code!!
         language_value.text = item.name!!
@@ -286,6 +294,7 @@ class MainActivity : CoreActivity(), SourcePresenter.SourceInterface, SourceRecy
         closeDropdown()
     }
 
+    //item select for category
     override fun onItemSelected(item: CategoryModel.dataCategory, tempView: View) {
         categoryName = item.code!!
         category_value.text = item.name!!
@@ -301,6 +310,7 @@ class MainActivity : CoreActivity(), SourcePresenter.SourceInterface, SourceRecy
 
     }
 
+    //item select for country
     override fun onItemSelectedCountry(item: CountryModel.dataCountry, tempView: View) {
         countryCode = item.code!!
         country_value.text = item.name!!
@@ -317,16 +327,19 @@ class MainActivity : CoreActivity(), SourcePresenter.SourceInterface, SourceRecy
 
     }
 
+    //first call category
     override fun setCurrentCategory(view: View, name : String) {
         currentCheckCategory = view
         category_value.text = name
     }
 
+    //first call language
     override fun setCurrentLanguage(view: View, name : String) {
         currentCheckLanguage = view
         language_value.text = name
     }
 
+    //first call country
     override fun setCurrentCountry(view: View, name : String) {
         currentCheckCountry = view
         country_value.text = name
@@ -337,6 +350,7 @@ class MainActivity : CoreActivity(), SourcePresenter.SourceInterface, SourceRecy
         Runtime.getRuntime().gc()
     }
 
+    //function for close dropdown category
     private fun closeDropdown(){
         categoryOpen = false
         recycler_category.visibility = View.GONE
@@ -352,6 +366,7 @@ class MainActivity : CoreActivity(), SourcePresenter.SourceInterface, SourceRecy
 
     }
 
+    //if data from remote return success for banner
     override fun onLoadSuccess(data: ArticlesResponse) {
         if(data != null){
             var index = 0
@@ -377,6 +392,7 @@ class MainActivity : CoreActivity(), SourcePresenter.SourceInterface, SourceRecy
         }
     }
 
+    //slider click function
     override fun onSliderClick(slider: BaseSliderView?) {
         DetailArticleActivity.launchIntent(this@MainActivity,
                 slider?.bundle?.getString("url").toString(), slider?.bundle?.getString("title").toString())
