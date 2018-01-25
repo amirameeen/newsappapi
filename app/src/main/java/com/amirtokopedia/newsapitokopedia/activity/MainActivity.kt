@@ -81,6 +81,7 @@ class MainActivity : CoreActivity(), SourcePresenter.SourceInterface, SourceRecy
         setContentView(R.layout.activity_main)
         actionBarSetting(false)
         button_menu.setOnClickListener(this)
+        source_change.setOnClickListener(this)
 //        rl_headline_source.setOnClickListener(this)
         drawerSetting()
         initBanner()
@@ -168,6 +169,9 @@ class MainActivity : CoreActivity(), SourcePresenter.SourceInterface, SourceRecy
 //            rl_headline_source->{
 //                HeadlineDialog(this@MainActivity).show()
 //            }
+            source_change->{
+                drawer_layout.openDrawer(navigation_drawer)
+            }
         }
     }
 
