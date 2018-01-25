@@ -92,7 +92,7 @@ class MainActivity : CoreActivity(), SourcePresenter.SourceInterface, SourceRecy
         swiperefresh.setOnRefreshListener(
                 SwipeRefreshLayout.OnRefreshListener {
                     initData()
-//                    initBanner()
+                    initBanner()
                     swiperefresh.isRefreshing = false
                 }
         )

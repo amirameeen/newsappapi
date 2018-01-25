@@ -32,50 +32,51 @@ abstract class CoreActivity : AppCompatActivity() {
         }
         englishLocale = newBase.resources.getString(R.string.prefs_locale_en)
         indonesianLocale = newBase.resources.getString(R.string.prefs_locale_in)
-//        initLocale(newBase, newBase.resources)
+        initLocale(newBase, newBase.resources)
         val newContext = ConfigurationWrapper.wrapLocale(newBase, Config.locale!!)
         val newTypekitContext = TypekitContextWrapper.wrap(newContext)
         super.attachBaseContext(newTypekitContext)
     }
 
     /** Initializes the locale for the activity */
-//    protected fun initLocale(context: Context, resources: Resources) {
-//        // Initialize the app's locale
-//        var curLocale = Config.locale?.toString()
-//        if (curLocale == null || curLocale.isEmpty()) {
-//            val savedLocale = PreferenceHelper.loadLocale()
-//            if (savedLocale == null) {
-//                val systemLocale = CommonCompat.getCurrentSystemLocale(context)
-//
-//                // Check default system locale
-//                if (systemLocale.language == indonesianLocale) curLocale = indonesianLocale
-//                else curLocale = englishLocale
-//
-//                // Initial save to prefs
+    protected fun initLocale(context: Context, resources: Resources) {
+        // Initialize the app's locale
+        var curLocale = Config.locale?.toString()
+        if (curLocale == null || curLocale.isEmpty()) {
+            val savedLocale = null
+//            savedLocale = PreferenceHelper.loadLocale()
+            if (savedLocale == null) {
+                val systemLocale = CommonCompat.getCurrentSystemLocale(context)
+
+                // Check default system locale
+                if (systemLocale.language == indonesianLocale) curLocale = indonesianLocale
+                else curLocale = englishLocale
+
+                // Initial save to prefs
 //                if (PreferenceHelper.isLaunch()) {
 //                    PreferenceHelper.saveLocale(curLocale!!)
 //                }
-//                this.curLocale = curLocale
-//            } else {
-//                if (savedLocale == indonesianLocale) curLocale = indonesianLocale
-//                else curLocale = englishLocale
-//            }
-//        }
-//
-//        val locale = Locale(curLocale)
-//        Config.locale = locale
-//        currentLocale = curLocale
-//    }
+                this.curLocale = curLocale
+            } else {
+                if (savedLocale == indonesianLocale) curLocale = indonesianLocale
+                else curLocale = englishLocale
+            }
+        }
 
-//    protected fun changeLanguage(language: String) {
-//        val languageLocale = language
-//        var curLocale = languageLocale
-//        // Initial save to prefs
+        val locale = Locale(curLocale)
+        Config.locale = locale
+        currentLocale = curLocale
+    }
+
+    protected fun changeLanguage(language: String) {
+        val languageLocale = language
+        var curLocale = languageLocale
+        // Initial save to prefs
 //        PreferenceHelper.saveLocale(curLocale)
-//        val locale = Locale(curLocale)
-//        Config.locale = locale
-//        currentLocale = curLocale
-//    }
+        val locale = Locale(curLocale)
+        Config.locale = locale
+        currentLocale = curLocale
+    }
 
 
 
