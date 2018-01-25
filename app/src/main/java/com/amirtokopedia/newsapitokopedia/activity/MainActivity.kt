@@ -7,6 +7,7 @@ import android.support.design.widget.NavigationView
 import android.support.v4.view.GravityCompat
 import android.support.v4.widget.SwipeRefreshLayout
 import android.support.v7.app.ActionBarDrawerToggle
+import android.support.v7.app.AppCompatDelegate
 import android.support.v7.widget.LinearLayoutManager
 import android.view.MenuItem
 import android.view.View
@@ -76,6 +77,7 @@ class MainActivity : CoreActivity(), SourcePresenter.SourceInterface, SourceRecy
     var countryId = "us"
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        AppCompatDelegate.setCompatVectorFromResourcesEnabled(true)
         setContentView(R.layout.activity_main)
         actionBarSetting(false)
         button_menu.setOnClickListener(this)

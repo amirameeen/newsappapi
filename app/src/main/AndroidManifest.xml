@@ -15,22 +15,27 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar">
         <activity
+            android:theme="@style/AppTheme.NoActionBar"
             android:name=".activity.MainActivity"
             android:screenOrientation="portrait">
         </activity>
         <activity
+            android:theme="@style/AppTheme.NoActionBar"
             android:name=".activity.ListArticleActivity"
             android:screenOrientation="portrait">
         </activity>
         <activity
+            android:theme="@style/AppTheme.NoActionBar"
             android:name=".activity.DetailArticleActivity"
             android:screenOrientation="portrait">
         </activity>
         <activity
+            android:theme="@style/AppTheme.NoActionBar"
             android:name=".activity.SearchArticleActivity"
             android:screenOrientation="portrait">
         </activity>
         <activity
+            android:theme="@style/AppTheme.NoActionBar"
             android:name=".activity.SplashActivity"
             android:screenOrientation="portrait">
             <intent-filter>

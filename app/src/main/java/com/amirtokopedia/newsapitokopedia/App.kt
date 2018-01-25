@@ -2,6 +2,7 @@ package com.amirtokopedia.newsapitokopedia
 
 import android.content.Context
 import android.support.multidex.MultiDexApplication
+import android.support.v7.app.AppCompatDelegate
 
 /**
  * Created by Amir Malik on 1/23/18.
@@ -22,6 +23,7 @@ class App : MultiDexApplication() {
     override fun onCreate() {
         super.onCreate()
         context = this
+        AppCompatDelegate.setCompatVectorFromResourcesEnabled(true)
     }
 
 
