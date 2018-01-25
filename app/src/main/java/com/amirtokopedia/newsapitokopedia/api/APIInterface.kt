@@ -24,6 +24,10 @@ interface APIInterface {
                            @Query("apiKey") ApiKey: String): Call<ArticlesResponse>
 
     @GET("top-headlines")
+    fun getHeadlineArticleByCountry(@Query("country") countryId : String,
+                                    @Query("apiKey") ApiKey: String): Call<ArticlesResponse>
+
+    @GET("top-headlines")
     fun getSearchArticle(@Query("sources") sourceId : String,
                          @Query("q") query : String,
                            @Query("apiKey") ApiKey: String): Call<ArticlesResponse>

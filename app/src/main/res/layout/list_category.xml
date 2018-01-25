@@ -5,7 +5,6 @@
     android:layout_height="match_parent">
     <RelativeLayout
         android:id="@+id/rl_category"
-        android:background="@color/colorGray80"
         android:padding="@dimen/padding_5dp"
         android:layout_width="match_parent"
         android:layout_height="@dimen/padding_50dp">

@@ -11,4 +11,5 @@
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
     <string name="app_name">NewsapiTokopedia</string>
+    <string name="no_news_here_please_try_again_refresh_or_change_the_category">No News here.\nPlease try again.\nRefresh or change the category.</string>
 </resources>

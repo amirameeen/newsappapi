@@ -23,10 +23,12 @@
                 android:orientation="vertical"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
-                <View
-                    android:background="@color/colorGray80"
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/padding_20dp"></View>
+                <ImageView
+                    android:layout_marginTop="@dimen/padding_20dp"
+                    android:adjustViewBounds="true"
+                    android:src="@drawable/nav_banner"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"></ImageView>
                 <include layout="@layout/list_category"></include>
                 <include layout="@layout/list_country"></include>
                 <include layout="@layout/list_language"></include>

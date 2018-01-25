@@ -39,6 +39,8 @@ class SourceRecycleAdapter(val context: Context, val data : SourceResponse?) : R
             itemView.source_description.text = textDescription
             itemView.source_url.text = source?.url
 
+            itemView.source_category.text = source?.category
+
             val language = Locale(source?.language)
             itemView.language.text = language.displayLanguage.toString()
 

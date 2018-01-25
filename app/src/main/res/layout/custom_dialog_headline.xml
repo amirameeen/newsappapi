@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:paddingTop="@dimen/padding_10dp"
+    android:paddingBottom="@dimen/padding_20dp"
+    android:background="@drawable/bg_base_dialog"
+    android:layout_width="300dp"
+    android:layout_height="200dp">
+
+    <TextView
+        android:id="@+id/txt_title_dialog"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="@dimen/padding_10dp"
+        android:layout_marginLeft="@dimen/padding_5dp"
+        android:layout_marginRight="@dimen/padding_5dp"
+        android:text="Headline"
+        android:textAlignment="center"
+        android:textSize="@dimen/text_16sp"
+        android:textStyle="bold" />
+
+    <View
+        android:id="@+id/separator_dialog"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@android:color/darker_gray"/>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/headline_change"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    </android.support.v7.widget.RecyclerView>
+
+    <TextView
+        android:id="@+id/btn_positive_dialog"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="OK"
+        android:textAllCaps="true"
+        android:textSize="@dimen/text_large"
+        android:textStyle="bold"
+        android:padding="@dimen/padding_16dp"
+        android:layout_marginRight="@dimen/padding_25dp"
+        android:layout_gravity="right"/>
+
+</LinearLayout>

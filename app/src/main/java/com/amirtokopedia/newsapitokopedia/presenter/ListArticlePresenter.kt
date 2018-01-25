@@ -17,10 +17,12 @@ class ListArticlePresenter(var ApplicationContext: Context, var listener: Articl
         ApiInitiation()
     }
 
-    fun getDataProcess(sourceId : String) {
+    fun getDataProcess(sourceId : String, countryId: String) {
         listener.onLoadData()
 
-        val dataService = mApiService?.getHeadlineArticle(sourceId, GetApiKey())
+        var dataService = mApiService?.getHeadlineArticle(sourceId, GetApiKey())
+        if(!countryId.equals(""))
+            dataService = mApiService?.getHeadlineArticleByCountry(countryId, GetApiKey())
         dataService?.enqueue(object : Callback<ArticlesResponse> {
             override fun onResponse(call: Call<ArticlesResponse>, response: Response<ArticlesResponse>) {
                 val StatusCode = response.code()

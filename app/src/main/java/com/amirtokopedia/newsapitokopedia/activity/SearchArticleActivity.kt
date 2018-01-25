@@ -3,6 +3,7 @@ package com.amirtokopedia.newsapitokopedia.activity
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.support.v4.widget.SwipeRefreshLayout
 import android.support.v7.widget.LinearLayoutManager
 import android.view.KeyEvent
 import android.view.View
@@ -45,6 +46,16 @@ class SearchArticleActivity : CoreActivity(), ListArticlePresenter.ArticleInterf
         search_layout_button_clear.setOnClickListener(this)
         getExtras()
         et_search_box.setOnEditorActionListener(this)
+        swipetorefresh()
+    }
+
+    fun swipetorefresh(){
+        swiperefresh.setOnRefreshListener(
+                SwipeRefreshLayout.OnRefreshListener {
+                    searchData(newsId, et_search_box.text.toString())
+                    swiperefresh.isRefreshing = false
+                }
+        )
     }
 
     fun searchData(sourceId : String, query : String){
@@ -94,6 +105,10 @@ class SearchArticleActivity : CoreActivity(), ListArticlePresenter.ArticleInterf
         Common.showProgressDialog(this@SearchArticleActivity)
     }
     override fun onLoadSuccess(data: ArticlesResponse) {
+        if(data.articles?.size == 0)
+            card_empty.visibility = View.VISIBLE
+        else
+            card_empty.visibility = View.GONE
         initView(data)
         Common.dismissProgressDialog()
     }

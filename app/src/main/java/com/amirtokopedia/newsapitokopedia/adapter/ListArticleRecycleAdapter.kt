@@ -41,7 +41,8 @@ class ListArticleRecycleAdapter(val context: Context, val data : ArticlesRespons
                 Picasso.with(context).load(source?.urlToImage)
                         .error(R.drawable.ic_image_loading)
                         .placeholder(R.drawable.ic_image_loading)
-                        .centerCrop().resize(150, 120)
+                        .resize(150, 110)
+                        .centerCrop()
                         .into(itemView.iv_news_image)
             }else{
                 itemView.iv_news_image.setImageDrawable(context.resources.getDrawable(R.drawable.ic_image_loading))

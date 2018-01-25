@@ -5,12 +5,11 @@ import android.content.Intent
 import android.os.Bundle
 import android.support.design.widget.NavigationView
 import android.support.v4.view.GravityCompat
-import android.support.v4.widget.DrawerLayout
+import android.support.v4.widget.SwipeRefreshLayout
 import android.support.v7.app.ActionBarDrawerToggle
 import android.support.v7.widget.LinearLayoutManager
 import android.view.MenuItem
 import android.view.View
-import android.widget.Toast
 import com.amirtokopedia.newsapitokopedia.App.Companion.context
 import com.amirtokopedia.newsapitokopedia.R
 import com.amirtokopedia.newsapitokopedia.activity.core.CoreActivity
@@ -20,15 +19,22 @@ import com.amirtokopedia.newsapitokopedia.adapter.LanguageAdapter
 import com.amirtokopedia.newsapitokopedia.adapter.SourceRecycleAdapter
 import com.amirtokopedia.newsapitokopedia.model.local.CategoryModel
 import com.amirtokopedia.newsapitokopedia.model.local.CountryModel
+import com.amirtokopedia.newsapitokopedia.model.remote.ArticlesResponse
 import com.amirtokopedia.newsapitokopedia.model.remote.Source
 import com.amirtokopedia.newsapitokopedia.model.remote.SourceResponse
+import com.amirtokopedia.newsapitokopedia.presenter.ListArticlePresenter
 import com.amirtokopedia.newsapitokopedia.presenter.SourcePresenter
 import com.amirtokopedia.newsapitokopedia.util.Common
+import com.amirtokopedia.newsapitokopedia.view.HeadlineDialog
+import com.daimajia.slider.library.SliderLayout
+import com.daimajia.slider.library.SliderTypes.BaseSliderView
+import com.daimajia.slider.library.SliderTypes.TextSliderView
 import com.google.gson.Gson
 import kotlinx.android.synthetic.main.action_bar_layout.*
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.card_news_source.*
 import kotlinx.android.synthetic.main.layout_main.*
+import kotlinx.android.synthetic.main.layout_slider.*
 import kotlinx.android.synthetic.main.list_category.*
 import kotlinx.android.synthetic.main.list_country.*
 import kotlinx.android.synthetic.main.list_language.*
@@ -40,9 +46,8 @@ class MainActivity : CoreActivity(), SourcePresenter.SourceInterface, SourceRecy
         View.OnClickListener,
         LanguageAdapter.onItemClick,
         CategoryAdapter.onItemClick,
-        CountryAdapter.onItemClick{
-
-
+        CountryAdapter.onItemClick,
+        ListArticlePresenter.ArticleInterface, BaseSliderView.OnSliderClickListener{
 
     companion object {
         fun launchIntent(context: Context) {
@@ -53,6 +58,7 @@ class MainActivity : CoreActivity(), SourcePresenter.SourceInterface, SourceRecy
 
     var mDrawerToggle: ActionBarDrawerToggle? = null
     var presenter : SourcePresenter? = null
+    var presenterBanner : ListArticlePresenter? = null
     var adapter : SourceRecycleAdapter? = null
     var adapterLanguage : LanguageAdapter? = null
     var adapterCategory : CategoryAdapter? = null
@@ -63,23 +69,49 @@ class MainActivity : CoreActivity(), SourcePresenter.SourceInterface, SourceRecy
     var categoryName = ""
     var languageName = ""
     var countryName = ""
+    var countryCode = ""
     var currentCheckCategory : View? = null
     var currentCheckLanguage : View? = null
     var currentCheckCountry : View? = null
+    var countryId = "us"
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         actionBarSetting(false)
         button_menu.setOnClickListener(this)
+//        rl_headline_source.setOnClickListener(this)
         drawerSetting()
+        initBanner()
         initData()
         categoryAndLanguage()
+        swipetorefresh()
+    }
+
+    fun swipetorefresh(){
+        swiperefresh.setOnRefreshListener(
+                SwipeRefreshLayout.OnRefreshListener {
+                    initData()
+//                    initBanner()
+                    swiperefresh.isRefreshing = false
+                }
+        )
     }
 
     fun initData(){
         presenter = SourcePresenter(this@MainActivity, this)
         presenter?.attach()
-        presenter?.getDataProcess(countryName, languageName, categoryName)
+        presenter?.getDataProcess(countryCode, languageName, categoryName)
+        tv_source_name.text = countryName
+        if(countryName.equals("All", true) || countryName == "")
+        {
+            tv_source_name.text = "All Country"
+        }
+    }
+
+    fun initBanner(){
+        presenterBanner = ListArticlePresenter(this@MainActivity, this)
+        presenterBanner?.attach()
+        presenterBanner?.getDataProcess("", countryId)
     }
 
     fun initView(data : SourceResponse){
@@ -127,7 +159,9 @@ class MainActivity : CoreActivity(), SourcePresenter.SourceInterface, SourceRecy
                     iv_icon_country.setImageDrawable(this@MainActivity.resources.getDrawable(R.drawable.ic_keyboard_arrow_down_black))
                 }
             }
-
+//            rl_headline_source->{
+//                HeadlineDialog(this@MainActivity).show()
+//            }
         }
     }
 
@@ -141,25 +175,25 @@ class MainActivity : CoreActivity(), SourcePresenter.SourceInterface, SourceRecy
     }
 
     override fun onLoadData() {
-//        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
         Common.showProgressDialog(this@MainActivity)
     }
 
     override fun onLoadSuccess(data: SourceResponse) {
-//        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        if(data.sources?.size == 0)
+            card_empty.visibility = View.VISIBLE
+        else
+            card_empty.visibility = View.GONE
         initView(data)
         Common.dismissProgressDialog()
         placeholder_news_source.visibility = View.GONE
     }
 
     override fun onLoadFailure() {
-//        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
         Common.dismissProgressDialog()
         Common.showMessageDialog(this@MainActivity, "Please try again")
     }
 
     override fun onItemSelected(item: Source) {
-//        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
 //        Toast.makeText(this@MainActivity, item.name, Toast.LENGTH_SHORT).show()
         ListArticleActivity.launchIntent(this@MainActivity, item.id!!, item.name!!)
     }
@@ -268,8 +302,9 @@ class MainActivity : CoreActivity(), SourcePresenter.SourceInterface, SourceRecy
     }
 
     override fun onItemSelectedCountry(item: CountryModel.dataCountry, tempView: View) {
-        countryName = item.code!!
+        countryCode = item.code!!
         country_value.text = item.name!!
+        countryName = item.name!!
         if(currentCheckCountry != null)
         {
             tempView.visibility = View.VISIBLE
@@ -316,5 +351,35 @@ class MainActivity : CoreActivity(), SourcePresenter.SourceInterface, SourceRecy
         iv_icon_language.setImageDrawable(this@MainActivity.resources.getDrawable(R.drawable.ic_keyboard_arrow_right_black))
 
     }
-}
 
+    override fun onLoadSuccess(data: ArticlesResponse) {
+        if(data != null){
+            var index = 0
+            while(index < 5){
+                val textSliderView = TextSliderView(this@MainActivity)
+                textSliderView
+                        .description(data.articles!![index].title)
+                        .image(data.articles!![index].urlToImage)
+                        .setScaleType(BaseSliderView.ScaleType.Fit)
+                        .setOnSliderClickListener(this)
+
+                val mBundle = Bundle()
+                mBundle.putString("url", data.articles!![index].url)
+                mBundle.putString("title", data.articles!![index].title)
+                textSliderView.bundle(mBundle)
+                slider.addSlider(textSliderView)
+                index++
+            }
+
+            slider.setPresetTransformer(SliderLayout.Transformer.Default)
+            slider.setPresetIndicator(SliderLayout.PresetIndicators.Center_Bottom)
+            slider.setDuration(2000)
+        }
+    }
+
+    override fun onSliderClick(slider: BaseSliderView?) {
+        DetailArticleActivity.launchIntent(this@MainActivity,
+                slider?.bundle?.getString("url").toString(), slider?.bundle?.getString("title").toString())
+    }
+
+}
